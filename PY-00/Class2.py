@@ -8,8 +8,6 @@
 # Group exercise:
 #===============================================================================
 
-#===============================================================================
-
 """
 Task: Guess a number between 1 and 10 and have the computer give you hints to help
 """
@@ -44,6 +42,7 @@ A breakfast wrap usually costs 7.50$.
 I can buy a breakfast wrap *if* it's still morning 
 I can buy a breakfast wrap *if* I have enough money.  
 """
+
 money = 5.50
 cost = 7.50
 weekend = False
@@ -67,34 +66,20 @@ else:
 #===============================================================================
 
 """
-There are 4 people in a room accused of robbing a bank,
-it's your job to figure out who's guilty without a shadow of a doubt. (No guessing at all)
-One person, the criminal, is lying, everyone else is telling the truth
+two people argue about who they think is the best football player in the world... or rather who isn't...
 
-person A says: "I didn't do it!"
-person B says: "I know A and C didn't do it!"
-person C says: "D robbed the bank!"
-person D says: "C robbed the bank!"
+person A says that Mbappe is NOT the best player in the world, and that Haaland is also NOT the best player in the world
+person B says that the best player in the world is NOT Mbappe or Haaland
+
+They seem to be yelling over eachother instead of listening to one another...
+
+Are they even disagreeing?...
 """
 #innocence list
-A = True
-B = True
-C = True
-D = True
+Mbappe = True
+Haaland = True
+A = not Mbappe and not Haaland
+B = not (Mbappe or Haaland)
 
-#accusations against A
-accusationsA = not A and not A and A
-
-#accusations against B (none)
-accusationsB = False
-#accusations against C
-accusationsC = not C and C
-
-#accusations against D
-accusationsD = D
-
-print(accusationsA)
-print(accusationsB)
-print(accusationsC)
-print(accusationsD)
-
+Answer = A == B
+print(Answer)
