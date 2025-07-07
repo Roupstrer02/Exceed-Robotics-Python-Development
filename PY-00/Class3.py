@@ -11,18 +11,18 @@ from time import sleep
 # Making Abbreviated Usernames:
 #===============================================================================
 
-# firstName = input("Please enter your first name: ")
-# lastName = input("Please enter your last name: ")
-# birthYear = input("Please enter your birth year: ")
+firstName = input("Please enter your first name: ")
+lastName = input("Please enter your last name: ")
+birthYear = input("Please enter your birth year: ")
 
-# firstName = firstName.lower()
-# firstName = firstName.capitalize()
+firstName = firstName.lower()
+firstName = firstName.capitalize()
 
-# lastName = lastName.lower()
-# lastName = lastName.capitalize()
+lastName = lastName.lower()
+lastName = lastName.capitalize()
 
-# print("Your username will be: ")
-# print(firstName + lastName[0] + "-" + birthYear[2:])
+print("Your username will be: ")
+print(firstName + lastName[0] + "-" + birthYear[2:])
 
 #===============================================================================
 # Basic individual task:
@@ -30,11 +30,13 @@ from time import sleep
 
 # """
 # There is a coded message on the board, make a program to decrypt it and put it together,
-# go up to the instructor computer and try to enter your code in their "unhackable PC"
+# go up to the instructor computer and try to enter your code in their "unhackable system"
 # """
+
 # #for instructor ===============================================================
 # messageOnBoard = "The 4nswer works b3tter when you look clo5er"
 
+# # code below generates a valid code from the message given above
 # codeOnBoard = ""
 # for letter in messageOnBoard:
 #     codeOnBoard += str(ord(letter)) + " "
@@ -92,7 +94,7 @@ see the responses given by the computer using the code in the instructor resourc
 #===============================================================================
 
 realCode = "435"
-secondMessage = "off by 1: "
+secondMessage = "Off by 1: "
 secondCode = "725"
 while True:
     code = input("\n\nEnter secret password: ")
