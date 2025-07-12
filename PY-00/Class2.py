@@ -2,6 +2,7 @@
 # Class2:
 # Roupen Kaloustian
 # July 2025
+# 
 #===============================================================================
 
 #===============================================================================
@@ -23,6 +24,14 @@ elif playerGuess > numberToGuess:
     print("Too high")
 else:
     print("Well Done!")
+
+#explain the flow of if elif else -> what happens when two ifs can occur (if - if - if vs if - elif - else)
+#needs a better example
+num = 5
+if num <= 10:
+    print("Hi, i'm A")
+if num >= 10:
+    print("Hi, i'm B")
 
 #===============================================================================
 # Basic individual task:

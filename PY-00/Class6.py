@@ -8,6 +8,19 @@
 # Group exercise:
 #===============================================================================
 
+num = 0
+
+while num < 10:
+    action = input("write 'up' to increase num or 'down' to decrease num: ")
+    action = action.lower()
+    action = action.strip()
+    if action == "up":
+        num += 1
+    elif action == "down":
+        num -= 1  
+
+    print(num)
+
 #===============================================================================
 # Basic individual task:
 #===============================================================================
@@ -28,7 +41,7 @@ print(" - 'a' to Attack")
 print(" - 'h' to recover Health")
 print()
 
-while level <= 3 and playerHealth > 0:
+while playerHealth > 0:
     print("================================================================")
     print("Level " + str(level))
     print("================================================================")
@@ -46,6 +59,8 @@ while level <= 3 and playerHealth > 0:
     if enemyHealth == 0:
         level = level + 1
         enemyHealth = level * 3
+
+
 
 print("================================================================")
 print("You won!")

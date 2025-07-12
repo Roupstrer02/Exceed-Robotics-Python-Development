@@ -6,23 +6,25 @@ pg.init()
 screen = pg.display.set_mode((800,600))
 clock = pg.time.Clock()
 font = pg.font.Font('freesansbold.ttf', 32)
-text = font.render("Game Over", False, "white")
-text2 = font.render("Click anywhere to close the game", False, "white")
 moleImage = pg.image.load(r"mole.png")
-hammerUp = pg.image.load(r"hammerNotClicked.png")
-hammerDown = pg.image.load(r"hammerClicked.png")
+hammer = pg.image.load(r"hammerNotClicked.png")
 
 #game variables
 previousClick = False
 justClicked = False
-moleDelay = 60
+moleTimer = 60
 moleCooldown = 60
 moleSize = 100
 moles = []
-gameover = False
-while not gameover:
+white = (255,255,255)
+black = (0,0,0)
+score = 0
 
-    #input processing
+#======================================================================================================
+# Game
+while True:
+
+    #inputs
     pg.event.pump()
 
     L, M, R = pg.mouse.get_pressed()
@@ -34,48 +36,38 @@ while not gameover:
     for mole in moles:
         if mole.collidepoint(mousePos) and justClicked:
             moles.remove(mole)
-            moleDelay -= 1
+            moleTimer -= 1
+            score += 1
+            break
 
     previousClick = L
 
-    #continuous game events
+    #updates
     if moleCooldown == 0:
-        moleCooldown = moleDelay
+        moleCooldown = moleTimer
         moles.append(pg.Rect(randint(0,screen.get_width()-moleSize),randint(0,screen.get_height()-moleSize), moleSize, moleSize))
     else:
         moleCooldown -= 1
-
-    #general logic
+    
+    scoreText = font.render("score: " + str(score), True, white)
+    
+    #game logic
     if len(moles) > 5:
-        gameover = True
+        # Game Over
+        print("Final score: " + str(score))
+        break
 
-    screen.fill("black")
+
+    #drawing
+    screen.fill(black)
 
     #I understand this is inefficient, but repeating this for loop makes it easier to understand 
     for mole in moles:
-
         #I'd rather teach getting attributes by name rather than by indexing, it's used nowhere else
         screen.blit(moleImage, (mole.x, mole.y))
+    screen.blit(hammer, (mx - 25, my - 25))
+    screen.blit(scoreText, (0,0))
 
-    # >>> BONUS <<< #
-    if L == False:
-        screen.blit(hammerUp, (mx - 25, my - 25))
-    else:
-        screen.blit(hammerDown, (mx - 25, my - 25))
-    
-
+    #clock
     clock.tick(60)
-    pg.display.flip()
-
-while True:
-    pg.event.pump()
-
-    L, M, R = pg.mouse.get_pressed()
-
-    if L == True:
-        break
-
-    screen.fill("black")
-    screen.blit(text, (300,200))
-    screen.blit(text2, (135,250))
     pg.display.flip()

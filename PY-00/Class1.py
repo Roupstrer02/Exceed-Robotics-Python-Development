@@ -2,6 +2,7 @@
 # Class1:
 # Roupen Kaloustian
 # July 2025
+# Learning objectives: python overview, data types, variables, data conversion, inputs, printing
 #===============================================================================
 
 #===============================================================================
