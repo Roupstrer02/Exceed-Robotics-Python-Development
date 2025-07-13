@@ -49,7 +49,8 @@ while playerHealth > 0:
     print("Enemy Health: " + str(enemyHealth))
 
     playerChoice = input("What would you like to do?\n-->")
-
+    playerChoice = playerChoice.lower()
+    playerChoice = playerChoice.strip()
     if playerChoice == "a":
         enemyHealth = enemyHealth - 1
         
