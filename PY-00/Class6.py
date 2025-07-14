@@ -17,7 +17,7 @@ while num < 10:
     if action == "up":
         num += 1
     elif action == "down":
-        num -= 1  
+        num -= 1
 
     print(num)
 
