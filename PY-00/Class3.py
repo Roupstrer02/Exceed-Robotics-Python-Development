@@ -38,7 +38,7 @@ print(firstName + lastName[0] + "-" + birthYear[2:])
 
 question1 = "What is my name?"
 question2 = "What is the name of the country you're in?"
-question3 = "if x = 4, and y = 5x - 2"
+question3 = "if x = 4, and y = 5x - 2: y = ?"
 
 answer1 = "a"
 answer2 = "b"
@@ -63,12 +63,12 @@ else:
     print("Incorrect...")
 
 print(question2)
-print("a) Instructor's real name")
-print("b) Incorrect Name")
-print("c) Incorrect Name")
+print("a) Canada")
+print("b) USA")
+print("c) Mexico")
 
 playerAnswer = input("guess: ")
-
+playerAnswer = playerAnswer.lower()
 
 if playerAnswer == answer2:
     print("Nicely done!!")
@@ -76,7 +76,12 @@ else:
     print("Incorrect...")
 
 print(question3)
+print("a) 16")
+print("a) 20")
+print("a) 18")
+
 playerAnswer = input("guess: ")
+playerAnswer = playerAnswer.lower()
 
 if playerAnswer == answer3:
     print("Nicely done!!")
@@ -85,8 +90,16 @@ else:
 
 #===============================================================================
 # Bonus Task:
-# Adding a score system, more questions, ?~numerical answers~?
+# Adding a game over menu with a summary
 #===============================================================================
+
+question1 = "What is my name?"
+question2 = "What is the name of the country you're in?"
+question3 = "if x = 4, and y = 5x - 2: y = ?"
+
+answer1 = "a"
+answer2 = "b"
+answer3 = "c"
 
 print("============================================================================")
 print("Welcome to the Quiz Game!")
@@ -94,26 +107,50 @@ print("=========================================================================
 print()
 
 print(question1)
-playerAnswer = input("guess: ")
-playerAnswer = playerAnswer.lower()
+print("a) Instructor's real name")
+print("b) Incorrect Name")
+print("c) Incorrect Name")
 
-if playerAnswer == answer1:
+playerAnswer1 = input("guess: ")
+playerAnswer1 = playerAnswer1.lower()
+
+if playerAnswer1 == answer1:
     print("Nicely done!!")
 else:
     print("Incorrect...")
 
 print(question2)
-playerAnswer = input("guess: ")
+print("a) Canada")
+print("b) USA")
+print("c) Mexico")
 
-if playerAnswer == answer2:
+playerAnswer2 = input("guess: ")
+playerAnswer2 = playerAnswer2.lower()
+
+if playerAnswer2 == answer2:
     print("Nicely done!!")
 else:
     print("Incorrect...")
 
 print(question3)
-playerAnswer = input("guess: ")
+print("a) 16")
+print("a) 20")
+print("a) 18")
 
-if playerAnswer == answer3:
+playerAnswer3 = input("guess: ")
+playerAnswer3 = playerAnswer3.lower()
+
+if playerAnswer3 == answer3:
     print("Nicely done!!")
 else:
     print("Incorrect...")
+
+print()
+print()
+print("============================================================================")
+print("                                Game Over")
+print("                              Quiz Summary:")
+print("                            Question 1: " + str(playerAnswer1 == answer1))
+print("                            Question 2: " + str(playerAnswer2 == answer2))
+print("                            Question 3: " + str(playerAnswer3 == answer3))
+print("============================================================================")
