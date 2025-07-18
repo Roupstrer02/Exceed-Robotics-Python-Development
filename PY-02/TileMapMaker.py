@@ -160,8 +160,6 @@ def printTileMap(tileMap):
     print("=========================================================================\n")
     print("compressed tile map (Use this in your game):\n")
     print(C_TMString + "\n")
-    print("raw tile map (use this if you want to use the tool to modify your map again):\n")
-    print(tileMapString + '\n')
     print("=========================================================================\n")
 
 def getSavedMap():
