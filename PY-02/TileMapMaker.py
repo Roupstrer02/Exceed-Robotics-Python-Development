@@ -57,7 +57,7 @@ def getDefaultTileSize(x, y):
     for i in range(1, max(x//12,y//12)+1):
         if x % i == 0 and y % i == 0:
             DTS = i
-    
+
     return DTS
 
 def getUserInputs():
@@ -83,18 +83,18 @@ def getUserInputs():
         screen_y = int(screen_y)
     else:
         screen_y = 1000
-    size = (screen_x, screen_y)
-    
+    size = (screen_x, screen_y + 30)
+
     defaultTileSize = getDefaultTileSize(screen_x, screen_y)
     tileSize = input(f"Input the size of each tile (press ENTER for standard size of {defaultTileSize}): ")
-    
+
     while isValidTileSize(tileSize, screen_x, screen_y) == False:
         PrintRetryInstructions()
         print(f"which divides both {screen_x} and {screen_y} with no remainder")
         tileSize = input(f"Input the size of each tile (press ENTER for standard size of {defaultTileSize}): ")
 
     print("screen size: " + str(size))
-    
+
     if tileSize != "":
         tileSize = int(tileSize)
     else:
@@ -103,7 +103,7 @@ def getUserInputs():
     print("tile size: " + str(tileSize))
 
     return size, tileSize
-    
+
 def getCompressedTileMap(tileMap):
     global tileSize, screen
     screen_x = screen.get_width()
@@ -124,12 +124,12 @@ def getCompressedTileMap(tileMap):
                  row[index].w += row[index+1].w
                  row.remove(row[index+1])
                  compressions += 1
-    
+
     for row in RectMatrix:
         for rect in row:
             if rect is not None:
                 compressedRectList.append(rect)
-    
+
     return compressedRectList
 
 def printTileMap(tileMap):
@@ -139,7 +139,7 @@ def printTileMap(tileMap):
     C_TMString = ""
     for tile in tileMap:
         tileMapString += f"pg.Rect({tile.x},{tile.y},{tile.w},{tile.h}),"
-    
+
     tileMapString = "[" + tileMapString[:-1] + "]"
 
     for rect in C_TM:
@@ -153,13 +153,15 @@ def printTileMap(tileMap):
         f.write("======================================================================\n\n")
         f.write("raw tile map (use this if you want to use the tool to modify your map again):\n\n")
         f.write(tileMapString)
-    
+
     with open("save.txt", 'w+') as f:
         for tile in tileMap:
             f.write(f"{tile.x} {tile.y} {tile.w} {tile.h}\n")
     print("=========================================================================\n")
     print("compressed tile map (Use this in your game):\n")
     print(C_TMString + "\n")
+    print("raw tile map (use this if you want to use the tool to modify your map again):\n")
+    print(tileMapString + '\n')
     print("=========================================================================\n")
 
 def getSavedMap():
@@ -177,7 +179,7 @@ def getSavedMap():
             else:
                 print("Done!")
                 break
-        
+
 # tool ===============================================================================
 pg.init()
 
@@ -185,15 +187,14 @@ user_input = getUserInputs()
 screensize = user_input[0]
 screen = pg.display.set_mode(screensize)
 clk = pg.time.Clock()
-font = pg.font.Font('freesansbold.ttf', screensize[0] // 32)
+font = pg.font.Font('freesansbold.ttf', screensize[0] // 35)
 
 getSavedMap()
 
 TutorialText1 = font.render("Hold left-click to add tiles to the maze", True, "white")
 TutorialText2 = font.render("Hold right-click to remove tiles to the maze", True, "white")
-TutorialText3 = font.render("Press ENTER to exit", True, "white")
-TutorialText4 = font.render("You'll see your map written in the terminal and in the output.txt file", True, "white")
-
+TutorialText3 = font.render("You'll see your map written in the terminal and in the output.txt file", True, "white")
+TutorialTextBottom = font.render("Press ENTER to exit", True, "black")
 tileSize = user_input[1]
 Done = False
 
@@ -207,7 +208,7 @@ while not Done:
 
     tileSelectedX = int(mx // tileSize)
     tileSelectedY = int(my // tileSize)
-    
+
     #logic
     if L or R:
         newRect = pg.Rect(tileSelectedX * tileSize, tileSelectedY * tileSize, tileSize, tileSize)
@@ -220,25 +221,28 @@ while not Done:
                 for tile in tileMap:
                     if tile.collidepoint((mx, my)):
                         tileMap.remove(tile)
-    
+
     if keys[pg.K_RETURN]:
         getCompressedTileMap(tileMap)
-        printTileMap(tileMap)    
+        printTileMap(tileMap)
+        pg.quit()
         break
 
     # drawing
     screen.fill("black")
+    pg.draw.rect(screen, "yellow", (0, screen.get_height() - 30, screensize[0], 30))
+    screen.blit(TutorialTextBottom, (0,screen.get_height()-30))
     if len(tileMap) > 0:
         for tile in tileMap:
             if tile.w == tileSize and tile.h == tileSize:
-                pg.draw.rect(screen, "green", tile)
+                pg.draw.rect(screen, "blue", tile)
             else:
                 pg.draw.rect(screen, "orange", tile)
     else:
         screen.blit(TutorialText1, (0,0))
         screen.blit(TutorialText2, (0,32))
         screen.blit(TutorialText3, (0,96))
-        screen.blit(TutorialText4, (0,128))
+
     pg.display.flip()
     clk.tick(60)
 

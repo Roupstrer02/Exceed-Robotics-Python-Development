@@ -94,7 +94,7 @@ else:
 #===============================================================================
 
 question1 = "What is my name?"
-question2 = "What is the name of the country you're in?"
+question2 = "What is the name of the country we're in?"
 question3 = "if x = 4, and y = 5x - 2: y = ?"
 
 answer1 = "a"

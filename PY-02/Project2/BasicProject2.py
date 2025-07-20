@@ -93,7 +93,7 @@ def mainMenu():
     screen.fill(black)
     pg.draw.rect(screen, green, startGameButton)
     screen.blit(startGameText, (412,484))
-    
+
     #clock
     pg.display.flip()
     clock.tick(60)
@@ -105,11 +105,11 @@ def playGame():
     # inputs ===============================================================
     pg.event.pump()
     keys = pg.key.get_pressed()
-    
+
     # logic ================================================================
     collectCoins()
     checkForGameOver()
-    
+
     # updates ==============================================================
     movePlayer()
     text = font.render("coins: " + str(coinsCollected), True, black)
@@ -117,10 +117,10 @@ def playGame():
     screen.fill(black)
     for wall in maze:
         pg.draw.rect(screen, lightblue, wall)
-    
+
     for coin in collectables:
         pg.draw.rect(screen, yellow, coin)
-    
+
     pg.draw.rect(screen, green, player)
     screen.blit(text, (0,5))
 
@@ -134,8 +134,8 @@ def gameOver():
     keys = pg.key.get_pressed()
 
     if keys[pg.K_ESCAPE] == True:
-        exit()
-    
+        state = 3
+
     screen.blit(gameOverText1, (375,400))
     screen.blit(gameOverText2, (300,440))
     pg.display.flip()
@@ -150,6 +150,7 @@ while True:
     else:
         break
 
+pg.quit()
 
 # possible bonuses (second opinion first):
 # - "Game Over" can loops back to main menu instead of closing
