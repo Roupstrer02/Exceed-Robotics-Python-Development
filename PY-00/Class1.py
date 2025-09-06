@@ -9,7 +9,7 @@
 # Group exercise:
 #===============================================================================
 
-x = "Hello"
+x = "Hello there!"
 y = input("What's your name? ")
 z = True
 
