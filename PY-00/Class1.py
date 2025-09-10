@@ -9,13 +9,19 @@
 # Group exercise:
 #===============================================================================
 
-x = "Hello there!"
-y = input("What's your name? ")
-z = True
+#go through each print as a separate example. Delete the previous one and write the new one each time
+print("Hello World!")
+print(123)
+print(5+5)
+print("Hello " + "World" + " Once" + " Again!")
 
+x = "Hello there!"
 print(x)
-print(y)
-print(z)
+
+# Note how this example pretty much does exactly what we will ask of them in the task
+y = input("What's your favorite food? ")
+print("Oh wow, I love " + y + " too!")
+
 
 #===============================================================================
 # Basic individual task:
