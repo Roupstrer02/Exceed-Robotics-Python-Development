@@ -10,15 +10,25 @@
 #===============================================================================
 
 #go through each print as a separate example. Delete the previous one and write the new one each time
+
+#print is a command that shows a message in the terminal, that message is whatever is put inside the ()
 print("Hello World!")
+
+#it can print words and numbers too
 print(123)
+
+#we'll take a closer look at this later but know that when you write a math expression anywhere in your code
+#the computer will first find the answer to that expression, and then use the result.
 print(5+5)
+print(5-5)
+print(5*5)
+print(5/5)
 print("Hello " + "World" + " Once" + " Again!")
 
 x = "Hello there!"
 print(x)
 
-# Note how this example pretty much does exactly what we will ask of them in the task
+# Note how this example pretty much does exactly what we will ask of them in the task repeatedly
 y = input("What's your favorite food? ")
 print("Oh wow, I love " + y + " too!")
 
