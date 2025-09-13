@@ -4,7 +4,7 @@ from time import sleep
 # Class3:
 # Roupen Kaloustian
 # July 2025
-# Learning Objectives: Teaching string methods, 
+# Learning Objectives: Teaching string methods,
 #===============================================================================
 
 #===============================================================================
@@ -125,7 +125,7 @@ print("b) USA")
 print("c) Mexico")
 
 playerAnswer2 = input("guess: ")
-playerAnswer2 = playerAnswer2.lower()
+bplayerAnswer2 = playerAnswer2.lower()
 
 if playerAnswer2 == answer2:
     print("Nicely done!!")
