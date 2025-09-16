@@ -10,29 +10,67 @@
 
 # tuples and lists can hold any number of any type of data
 myNewTuple = (1, 3.14, True, "Exceed")
+print(myNewTuple)
+
 myNewList = [False, "Robotics", 100, 9.99]
+print(myNewList)
 
 # we use tuples in cases we know the amount of data won't change
-profile = ("Adventurer01", "Archer")
+profile = ("Adventurer01", "supersecretpassword123")
 
 print("Username: " + profile[0])
-print("Class: " + profile[1])
-
-print()
+print("password: " + profile[1])
 
 # we use lists in cases we know the amount of data can change
-playerItems = ["Bow", "Bundle of arrows", "Map", "Backpack"]
-# this is just an example, we'll look at MUCH better ways to implement this kind of feature 
+handOfCards = ["7 of diamonds", "Queen of hearts", "9 of clubs", "King of spades", "Joker"]
+# this is just an example, we'll look at MUCH better ways to implement this kind of feature in the future
 
-print("Player Inventory:")
 
-for item in playerItems:
-    print(" - " + item)
+# Using lists
+# Very often, we need to go through every element of a list and perform some action.
+# There are two ways to do this:
+
+# element x in [y]
+print("Player hand:")
+for card in handOfCards:
+    print(" - " + card)
+
+# i in range(a,b)
+print("Player hand:")
+for i in  range(0,5):
+    print(" - " + handOfCards[i])
+
+# both methods get the same job done, but sometimes, it's easier to use one than the other
 
 #===============================================================================
-# Basic individual task:
+# Basic individual task: Real Mastermind
 #===============================================================================
 
+answer = ["red", "red", "blue", "green"]
+playerAnswer = []
+
+print("first color:")
+playerInput1 = input()
+playerAnswer.append(playerInput1)
+
+print("second color:")
+playerInput2 = input()
+playerAnswer.append(playerInput2)
+
+print("third color:")
+playerInput3 = input()
+playerAnswer.append(playerInput3)
+
+print("fourth color:")
+playerInput4 = input()
+playerAnswer.append(playerInput4)
+
+print("Results:")
+for i in range(0,4):
+    if answer[i] == playerAnswer[i]:
+        print(" - Correct!")
+    else:
+        print(" - Wrong...")
 
 
 #===============================================================================
