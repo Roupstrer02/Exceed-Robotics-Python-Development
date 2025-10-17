@@ -1,6 +1,4 @@
-name = input("Write a person's name here: ")
-verb = input("Write a verb here: ")
+points = 20
 
-print()
-
-print(name + " is taking too long to " + verb + " this >:(")
+if points > 10:
+    print("You Win!")
