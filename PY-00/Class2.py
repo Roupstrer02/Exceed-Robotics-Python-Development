@@ -5,24 +5,9 @@
 #
 #===============================================================================
 
-#===============================================================================
-# Group exercise:
-#===============================================================================
-
-"""
-Task: Guess a number between 1 and 10 and have the computer give you hints to help
-"""
-
-# explain the flow of if elif else -> what happens when two ifs can occur (if - if - if vs if - elif - else)
-#try this if-elif-else block 3 times, once with different values taht trigger different parts of the if-elif-else block
-
-x = 0
-if x > 0:
-    print("x > 0")
-elif x > 10:
-    print("x > 10")
-else:
-    print("x <= 0")
+#===========================================================================================================
+# Group exercise: 
+#===========================================================================================================
 
 # try with num = 5 | num = 15 | num = 10 << this final one would make both if statements occur
 num = 5
@@ -42,6 +27,16 @@ if num <= 10:
 elif num >= 10:
     print("Hi, i'm B")
 
+# explain the flow of if elif else -> what happens when two ifs can occur (if - if - if vs if - elif - else)
+#try this if-elif-else block 3 times, once with different values taht trigger different parts of the if-elif-else block
+
+x = 0
+if x > 0:
+    print("x > 0")
+elif x > 10:
+    print("x > 10")
+else:
+    print("x <= 0")
 
 # this second example shows how booleans can be stored in variables and used
 x = input("pick a number, any number: ")
@@ -58,7 +53,7 @@ else:
 
 #===============================================================================
 # Basic individual task: Number guesser
-# Player guesses a given number between 1 to 10
+# Guess a number between 1 and 10 and have the computer give you hints to help
 #===============================================================================
 
 numberToGuess = 5
@@ -73,6 +68,8 @@ elif playerGuess > numberToGuess:
     print("Too high")
 else:
     print("Well Done!")
+
+
 
 #===============================================================================
 # Bonus Task:
