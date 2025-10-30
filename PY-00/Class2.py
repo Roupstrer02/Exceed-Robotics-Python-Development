@@ -52,7 +52,7 @@ else:
 
 
 #===============================================================================
-# Basic individual task: Number guesser
+# Basic individual task: Number guessing game
 # Guess a number between 1 and 10 and have the computer give you hints to help
 #===============================================================================
 
@@ -78,10 +78,10 @@ else:
 #===============================================================================
 
 numberToGuess = 72
-print("============= Welcome to Mastermind =============")
+print("===== Number Guessing Game =====")
 print("Guess my number, it's between 1 and 100, good luck!")
 print()
-print("Attempts left: 3")
+print("Attempts left: 2")
 playerGuess = input("Your first guess: ")
 playerGuess = int(playerGuess)
 
@@ -91,7 +91,7 @@ if playerGuess != numberToGuess:
 else:
     print("Well Done!")
 
-print("Attempts left: 2")
+print("Attempts left: 1")
 
 playerGuess = input("Your second guess: ")
 playerGuess = int(playerGuess)
@@ -101,17 +101,6 @@ if playerGuess != numberToGuess:
     print("Hint: My number - 2 is divisible by 10")
 else:
     print("Well Done!!")
-
-print("Attempts left: 1")
-
-playerGuess = input("Your third guess: ")
-playerGuess = int(playerGuess)
-
-if playerGuess != numberToGuess:
-    print("Wrong")
-    print("Hint: My number is between 70 and 80")
-else:
-    print("Well Done!!!")
 
 print("Game Over")
 # An extra bonus could be to get them to force the game to stop when the right number is reached
