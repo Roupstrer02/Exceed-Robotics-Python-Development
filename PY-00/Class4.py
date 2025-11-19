@@ -72,7 +72,6 @@ elif player_Choice == "Scissors":
     elif CPU_Num == 2:
         print("Tie!")
 
-
 #===============================================================================
 # Bonus Task:
 # Allow the player to pick between two minigames: RPS, and a coin toss game
