@@ -73,8 +73,9 @@ def moveCamera(d, x, y):
 
 def updateDungeon(d, p, x, y):
     if y > len(d)-1:
-        #d.append([None for x in range(len(d), y-1)])
-        d.append([Room("standard", x, y, p.position_x, p.position_y)])
+        newrow = [None for X in range(0, x)]
+        newrow.append(Room("standard", x, y, p.position_x, p.position_y))
+        d.append(newrow)
     elif x > len(d[y])-1:
         for i in range(len(d[y]), x):
             d[y].append(None)
