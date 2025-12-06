@@ -1,6 +1,6 @@
 from pygame import Rect
 import pygame as pg
-
+from random import randint
 pg.init()
 screenSize = (1000,1000)
 screen = pg.display.set_mode(screenSize)
@@ -21,6 +21,8 @@ class player:
     room_y = 0
     position_x = 500
     position_y = 500
+
+
     def control(self):
         keys = pg.key.get_pressed()
 
@@ -45,22 +47,61 @@ class player:
     def draw(self):
         pg.draw.rect(screen, 'lightblue', self.hitbox)
 
-class Room:
-    def __init__(self, roomtype, rx, ry, px, py):
-        dx = 1000*rx - px + 500
-        dy = 1000*ry - py + 500
-        if roomtype == "standard":
-            self.tiles = [pg.Rect(dx + 100, dy + 100, 800, 800),
-            pg.Rect(dx + 900, dy + 450,100,100),
-            pg.Rect(dx + 450, dy + 900,100,100)]
 
-            if rx > 0:
-                self.tiles.append(pg.Rect(dx + 0, dy + 450,100,100))
-            if ry > 0:
-                self.tiles.append(pg.Rect(dx + 450, dy + 0,100,100))
+class Enemy:
+    hp = 10
+    atk = 1
+    armor = 0
+
+    speed = 20
+
+    def __init__(self, rx, ry, px, py):
+        self.room_x = rx
+        self.room_y = ry
+        self.starting_x = px
+        self.starting_y = py
+        dx = 1000 * rx - px + 500
+        dy = 1000 * ry - py + 500
+        self.hitbox = Rect(dx, dy, 75, 75)
+
     def draw(self):
-        for tile in self.tiles:
-            pg.draw.rect(screen, "brown", tile)
+        pg.draw.ellipse(screen, 'red', self.hitbox)
+        print(self.hitbox.x, self.hitbox.y)
+
+class Room:
+    enemies = []
+    def __init__(self, roomtype, rx, ry, px, py):
+        self.rt = roomtype
+        self.rx = rx
+        self.ry = ry
+        dx = 1000 * rx - px + 500
+        dy = 1000 * ry - py + 500
+        self.tiles = [pg.Rect(dx + 100, dy + 100, 800, 800),
+        pg.Rect(dx + 900, dy + 450,100,100),
+        pg.Rect(dx + 450, dy + 900,100,100)]
+        if rx > 0:
+            self.tiles.append(pg.Rect(dx + 0, dy + 450,100,100))
+        if ry > 0:
+            self.tiles.append(pg.Rect(dx + 450, dy + 0,100,100))
+
+        #roomtype specific walls & enemies
+        if roomtype == "standard":
+            pass
+        elif roomtype == "danger":
+            self.enemies.append(Enemy(rx, ry, 300, 300))
+    def draw(self):
+        if self.rt == "standard":
+            for tile in self.tiles:
+                pg.draw.rect(screen, "gray", tile)
+        elif self.rt == "danger":
+            for tile in self.tiles:
+                pg.draw.rect(screen, "darkgreen", tile)
+
+        for enemy in self.enemies:
+            enemy.draw()
+
+
+
 
 
 def moveCamera(d, x, y):
@@ -70,24 +111,28 @@ def moveCamera(d, x, y):
                 for tile in room.tiles:
                     tile.x += x
                     tile.y += y
+                for e in room.enemies:
+                    e.hitbox.x += x
+                    e.hitbox.y += y
 
-def updateDungeon(d, p, x, y):
+def updateDungeon(d, rTypes, p, x, y):
     if y > len(d)-1:
         newrow = [None for X in range(0, x)]
-        newrow.append(Room("standard", x, y, p.position_x, p.position_y))
+        newrow.append(Room(rTypes[randint(0,len(rTypes)-1)], x, y, p.position_x, p.position_y))
         d.append(newrow)
     elif x > len(d[y])-1:
         for i in range(len(d[y]), x):
             d[y].append(None)
-        d[y].append(Room("standard", x, y, p.position_x, p.position_y))
+        d[y].append(Room(rTypes[randint(0,len(rTypes)-1)], x, y, p.position_x, p.position_y))
     elif d[y][x] is None:
-        d[y][x] = Room("standard", x, y, p.position_x, p.position_y)
+        d[y][x] = Room(rTypes[randint(0,len(rTypes)-1)], x, y, p.position_x, p.position_y)
 
 
 
 p = player()
 dungeon = [[Room("standard", 0, 0, p.position_x, p.position_y)]]
-enemies = []
+roomTypes = ["standard", "danger"]
+
 while True:
     pg.event.pump()
     roomBefore = (p.room_x, p.room_y)
@@ -95,10 +140,8 @@ while True:
     roomAfter = (p.room_x, p.room_y)
     moveCamera(dungeon, cx, cy)
     if roomBefore != roomAfter:
-        updateDungeon(dungeon, p, p.room_x, p.room_y)
-        for r in dungeon:
-            print(r)
-        print('\n\n')
+        updateDungeon(dungeon, roomTypes, p, p.room_x, p.room_y)
+
 
 
 
