@@ -42,6 +42,8 @@ class player:
         self.position_y -= cam_y
         self.room_x = self.position_x // 1000
         self.room_y = self.position_y // 1000
+
+
         return cam_x, cam_y
 
     def draw(self):
@@ -60,25 +62,39 @@ class Enemy:
         self.room_y = ry
         self.starting_x = px
         self.starting_y = py
-        dx = 1000 * rx - px + 500
-        dy = 1000 * ry - py + 500
+        dx = 1000 * rx - px + 500 + randint(200,700)
+        dy = 1000 * ry - py + 500 + randint(200,700)
         self.hitbox = Rect(dx, dy, 75, 75)
 
     def draw(self):
         pg.draw.ellipse(screen, 'red', self.hitbox)
-        print(self.hitbox.x, self.hitbox.y)
 
 class Room:
-    enemies = []
+
     def __init__(self, roomtype, rx, ry, px, py):
         self.rt = roomtype
         self.rx = rx
         self.ry = ry
         dx = 1000 * rx - px + 500
         dy = 1000 * ry - py + 500
+        self.enemies = []
         self.tiles = [pg.Rect(dx + 100, dy + 100, 800, 800),
         pg.Rect(dx + 900, dy + 450,100,100),
         pg.Rect(dx + 450, dy + 900,100,100)]
+
+        self.walls = [
+        pg.Rect(dx, dy, 450, 100),
+        pg.Rect(dx, dy, 100, 450),
+
+        pg.Rect(dx + 550, dy, 450, 100),
+        pg.Rect(dx + 900, dy, 100, 450),
+
+        pg.Rect(dx, dy + 550, 100, 450),
+        pg.Rect(dx, dy + 900, 450, 100),
+
+        pg.Rect(dx + 900, dy + 550, 100, 450),
+        pg.Rect(dx + 550, dy + 900, 450, 100)]
+
         if rx > 0:
             self.tiles.append(pg.Rect(dx + 0, dy + 450,100,100))
         if ry > 0:
@@ -88,7 +104,7 @@ class Room:
         if roomtype == "standard":
             pass
         elif roomtype == "danger":
-            self.enemies.append(Enemy(rx, ry, 300, 300))
+            self.enemies.append(Enemy(rx, ry, px, py))
     def draw(self):
         if self.rt == "standard":
             for tile in self.tiles:
@@ -114,6 +130,9 @@ def moveCamera(d, x, y):
                 for e in room.enemies:
                     e.hitbox.x += x
                     e.hitbox.y += y
+                for wall in room.walls:
+                    wall.x += x
+                    wall.y += y
 
 def updateDungeon(d, rTypes, p, x, y):
     if y > len(d)-1:
@@ -132,7 +151,8 @@ def updateDungeon(d, rTypes, p, x, y):
 p = player()
 dungeon = [[Room("standard", 0, 0, p.position_x, p.position_y)]]
 roomTypes = ["standard", "danger"]
-
+roomBefore = (0,0)
+roomAfter = (0,0)
 while True:
     pg.event.pump()
     roomBefore = (p.room_x, p.room_y)
@@ -143,7 +163,12 @@ while True:
         updateDungeon(dungeon, roomTypes, p, p.room_x, p.room_y)
 
 
-
+    currentRoom = dungeon[p.room_y][p.room_x]
+    for wall in currentRoom.walls:
+        if wall.colliderect(p.hitbox):
+            moveCamera(dungeon, -cx, -cy)
+            p.position_x += cx
+            p.position_y += cy
 
 
     screen.fill('black')
