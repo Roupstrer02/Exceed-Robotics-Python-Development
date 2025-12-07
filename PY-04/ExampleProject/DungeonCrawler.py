@@ -168,6 +168,10 @@ while True:
     currentRoom = dungeon[p.room_y][p.room_x]
     for wall in currentRoom.walls:
         if wall.colliderect(p.hitbox):
+            wc = wall.center
+            pc = p.hitbox.center
+            if pc[0] < wc[0]:
+
             moveCamera(dungeon, -cx, -cy)
             p.position_x += cx
             p.position_y += cy
@@ -181,20 +185,4 @@ while True:
     p.draw()
     clock.tick(60)
     pg.display.flip()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
