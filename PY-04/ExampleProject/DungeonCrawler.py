@@ -150,9 +150,11 @@ def updateDungeon(d, rTypes, p, x, y):
 
 p = player()
 dungeon = [[Room("standard", 0, 0, p.position_x, p.position_y)]]
+
 roomTypes = ["standard", "danger"]
 roomBefore = (0,0)
 roomAfter = (0,0)
+
 while True:
     pg.event.pump()
     roomBefore = (p.room_x, p.room_y)
