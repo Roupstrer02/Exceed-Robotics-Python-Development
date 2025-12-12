@@ -92,4 +92,4 @@ else:
     for pA in playerAnswer:
         if pA not in answer:
             print(pA + " is not part of the answer!")
-    
+

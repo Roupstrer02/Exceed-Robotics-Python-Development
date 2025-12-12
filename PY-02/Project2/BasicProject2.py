@@ -108,7 +108,7 @@ def playGame():
 
     # logic ================================================================
     collectCoins()
-    checkForGameOver()
+    #checkForGameOver()
 
     # updates ==============================================================
     movePlayer()
