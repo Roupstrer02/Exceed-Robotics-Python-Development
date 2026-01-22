@@ -26,56 +26,81 @@ for row in map:
 
 #===============================================================================
 # Basic individual task:
-# 5x5 Battleship
+# Hide and Seek
 #===============================================================================
 
-ocean = [[0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0]]
-
-while True:
-    for row in ocean:
-        for tile in row:
-            print(tile, end=" ")
-        print("")
-
-    playerAttackX = input("What row do you want to hit? ")
-    playerAttackY = input("What column do you want to hit? ")
-
-    playerAttackX = int(playerAttackX)
-    playerAttackY = int(playerAttackY)
-    playerAttack = [playerAttackX, playerAttackY]
-    
-    ocean[playerAttackX][playerAttackY] = "X"
-
-    
-    print()
-    print()
-
-#===============================================================================
-# Bonus Task:
-# - detect duplicate moves (hitting tiles already hit)
-#===============================================================================
-
-# ocean = [[0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0]]
-# previousAttacks = []
-
+# maze = [['~','~','~','~','~'], ['~','~','~','~','~'], ['~','~','~','~','~'], ['~','~','~','~','~'], ['~','~','~','~','~']]
+# row = 2
+# column = 2
 # while True:
-#     for row in ocean:
-#         for tile in row:
-#             print(tile, end=" ")
-#         print("")
 
-#     playerAttackX = input("What row do you want to hit? ")
-#     playerAttackY = input("What column do you want to hit? ")
+#     maze[row][column] = 'X'
 
-#     playerAttackX = int(playerAttackX)
-#     playerAttackY = int(playerAttackY)
-#     playerAttack = [playerAttackX, playerAttackY]
-    
-#     if playerAttack not in previousAttacks:
-#         previousAttacks.append(playerAttack)
-#         ocean[playerAttackX][playerAttackY] = "X"
-#     else:
-#         print("!!! Tile already hit, pick a new tile !!!")
-    
-#     print()
-#     print()
+#     for i in range(0,5):
+#         print(maze[i])
+
+#     maze[row][column] = '~' # <-- this line will almost definitely be confusing to students
+
+#     move = input("where do you want to go? ")
+
+#     if move == "left":
+#         column = column - 1
+#     elif move == "right":
+#         column = column + 1
+#     elif move == "up":
+#         row = row - 1
+#     elif move == "down":
+#         row = row + 1
+
+
+#===============================================================================
+# Bonus Task(s):
+# - if the player tries to go out of bounds, keep them where they are
+# - let the player move diagonally
+# - (VERY HARD) draw the path left by the player of all the tiles they've already visited [W.I.P might not teach foreach loop]
+#===============================================================================
+
+maze = [['~','~','~','~','~'], ['~','~','~','~','~'], ['~','~','~','~','~'], ['~','~','~','~','~'], ['~','~','~','~','~']]
+row = 2
+column = 2
+while True:
+
+    maze[row][column] = 'X'
+
+    for i in range(0,5):
+        print(maze[i])
+
+    maze[row][column] = '~'
+
+    move = input("where do you want to go? ")
+
+    if move == "w":
+        column = column - 1
+    elif move == "e":
+        column = column + 1
+    elif move == "n":
+        row = row - 1
+    elif move == "s":
+        row = row + 1
+    elif move == "ne":
+        row = row - 1
+        column = column + 1
+    elif move == "se":
+        row = row + 1
+        column = column + 1
+    elif move == "sw":
+        row = row + 1
+        column = column - 1
+    elif move == "nw":
+        row = row - 1
+        column = column - 1
+
+    if row > 4:
+        row = 0
+    elif row < 0:
+        row = 4
+
+    if column > 4:
+        column = 0
+    elif column < 0:
+        column = 4

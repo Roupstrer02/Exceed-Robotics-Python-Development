@@ -1,34 +1,14 @@
 #===============================================================================
 # Class3:
 # Roupen Kaloustian
-# July 2025
+# January 2026
 # Learning Objectives: Teaching string methods,
 #===============================================================================
 
-#===============================================================================
-# Group exercise:
-# Making Abbreviated Usernames:
-#===============================================================================
-
-firstName = input("Please enter your first name: ")
-lastName = input("Please enter your last name: ")
-birthYear = input("Please enter your birth year: ")
-
-firstName = firstName.lower()
-
-print(firstName)
-firstName = firstName.capitalize()
-print(firstName)
-
-lastName = lastName.lower()
-print(firstName)
-lastName = lastName.capitalize()
-print(firstName)
-
-print()
-
-print("Your username will be: ")
-print(firstName + lastName[0] + "-" + birthYear[2:])
+# !!! #
+# This file contains both the normal and extended versions of the task.
+# Comment out one of the versions to test the other if needed.
+# !!! #
 
 #===============================================================================
 # Basic individual task:
@@ -40,7 +20,7 @@ question3 = "if x = 4, and y = 5x - 2: y = ?"
 
 answer1 = "a"
 answer2 = "b"
-answer3 = "c"
+answer3 = 18
 
 print("============================================================================")
 print("Welcome to the Quiz Game!")
@@ -61,8 +41,8 @@ else:
     print("Incorrect...")
 
 print(question2)
-print("a) Canada")
-print("b) USA")
+print("a) USA")
+print("b) Canada")
 print("c) Mexico")
 
 playerAnswer = input("guess: ")
@@ -74,12 +54,10 @@ else:
     print("Incorrect...")
 
 print(question3)
-print("a) 16")
-print("a) 20")
-print("a) 18")
+print()
 
-playerAnswer = input("guess: ")
-playerAnswer = playerAnswer.lower()
+playerAnswer = input("input the answer directly: ")
+playerAnswer = int(playerAnswer)
 
 if playerAnswer == answer3:
     print("Nicely done!!")
@@ -91,64 +69,20 @@ else:
 # Adding a game over menu with a summary
 #===============================================================================
 
-question1 = "What is my name?"
-question2 = "What is the name of the country we're in?"
-question3 = "if x = 4, and y = 5x - 2: y = ?"
+username = "Instructor"
+password = "in123"
 
-answer1 = "a"
-answer2 = "b"
-answer3 = "c"
+usernameInput = input("Enter username: ")
+passwordInput = input("Enter password: ")
 
-print("============================================================================")
-print("Welcome to the Quiz Game!")
-print("============================================================================")
-print()
+caseCorrectedPassword = passwordInput.lower()
 
-print(question1)
-print("a) Instructor's real name")
-print("b) Incorrect Name")
-print("c) Incorrect Name")
-
-playerAnswer1 = input("guess: ")
-playerAnswer1 = playerAnswer1.lower()
-
-if playerAnswer1 == answer1:
-    print("Nicely done!!")
+if usernameInput == username and passwordInput == password:
+    print("Logging in...")
+elif usernameInput == username and caseCorrectedPassword == password:
+    print("Invalid password (double check your capitalization)")
 else:
-    print("Incorrect...")
+    print("Invalid Login")
 
-print(question2)
-print("a) Canada")
-print("b) USA")
-print("c) Mexico")
 
-playerAnswer2 = input("guess: ")
-bplayerAnswer2 = playerAnswer2.lower()
 
-if playerAnswer2 == answer2:
-    print("Nicely done!!")
-else:
-    print("Incorrect...")
-
-print(question3)
-print("a) 16")
-print("a) 20")
-print("a) 18")
-
-playerAnswer3 = input("guess: ")
-playerAnswer3 = playerAnswer3.lower()
-
-if playerAnswer3 == answer3:
-    print("Nicely done!!")
-else:
-    print("Incorrect...")
-
-print()
-print()
-print("============================================================================")
-print("                                Game Over")
-print("                              Quiz Summary:")
-print("                            Question 1: " + str(playerAnswer1 == answer1))
-print("                            Question 2: " + str(playerAnswer2 == answer2))
-print("                            Question 3: " + str(playerAnswer3 == answer3))
-print("============================================================================")

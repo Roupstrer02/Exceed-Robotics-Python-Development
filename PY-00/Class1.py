@@ -1,40 +1,17 @@
 #===============================================================================
 # Class1:
 # Roupen Kaloustian
-# July 2025
-# Learning objectives: python overview, data types, variables, data conversion, inputs, printing
+# January 2026
+# Learning Objectives: python overview, print(), input(), variables
 #===============================================================================
 
-#===============================================================================
-# Group exercise:
-#===============================================================================
-
-#go through each print as a separate example. Delete the previous one and write the new one each time
-
-#print is a command that shows a message in the terminal, that message is whatever is put inside the ()
-print("Hello World!")
-
-#it can print words and numbers too
-print(123)
-
-#we'll take a closer look at this later but know that when you write a math expression anywhere in your code
-#the computer will first find the answer to that expression, and then use the result.
-print(5+5)
-print(5-5)
-print(5*5)
-print(5/5)
-print("Hello " + "World" + " Once" + " Again!")
-
-x = "Hello there!"
-print(x)
-
-# Note how this example pretty much does exactly what we will ask of them in the task repeatedly
-y = input("What's your favorite food? ")
-print("Oh wow, I love " + y + " too!")
-
+# !!! #
+# This file contains both the normal and extended versions of the task.
+# Comment out one of the versions to test the other if needed.
+# !!! #
 
 #===============================================================================
-# Basic individual task:
+# Basic individual task: Madlibs story
 #===============================================================================
 
 print("===== Madlibs example =====")
@@ -53,16 +30,24 @@ print()
 
 print("I went to " + answer1 + " to get a " + answer2 + " bowl of " + answer3 + " lunch.")
 print("I ended up getting some " + answer4 + ", as usual. It was " + answer5 + ".")
-print("After " + answer6 + " all my food I ran " + answer7 + " back to work, because I didn't realise that my lunch break is almost over.")
+print("After " + answer6 + " all my food I ran " + answer7 + " back to work, because I didn't realise that my lunch break was almost over.")
 print("That's mainly because I forgot my watch back at " + answer8 + ".")
 print()
 print("Oh well!")
+print()
 
 #===============================================================================
 # Bonus Task:
-# Don't need one for class1
+# ascii art using prints()
 #===============================================================================
 
+print("    ______        _______               ")
+print("   /_____/,      /       \       ^~^    ") #recommend in the slides that students leave a " " before and after the message to avoid problems with "\"
+print("  /_____//      /         \     ('Y') ) ")
+print(" /_____//       |   ___   |     /   \/  ")
+print(" (_____(/       |   | |   |    (\|||/)  ")
+print()
+print("The End!")
 """
 
 """
