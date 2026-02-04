@@ -39,30 +39,62 @@
 
 #===============================================================================
 
-ocean = [['~','~','~','~','~'], ['~','~','~','~','~'], ['~','~','~','~','~'], ['~','~','~','~','~'], ['~','~','~','~','~']]
+maze = [['~','~','~','~','~'], ['~','~','~','~','~'], ['~','~','~','~','~'], ['~','~','~','~','~'], ['~','~','~','~','~']]
 row = 2
 column = 2
+
+treasureRow = 4
+treasureColumn = 4
 while True:
 
-    Movement = input("Where do you want to go? ")
+    maze[row][column] = 'X'
 
-    ocean[row][column] = '~'
+    for i in range(0,5):
+        print(maze[i])
 
-    if Movement == "left":
+    maze[row][column] = '='
+
+    move = input("where do you want to go? ")
+
+    #movement (class 7)
+    #==================================================================
+    if move == "w":
         column = column - 1
-    elif Movement == "up":
-        row = row - 1
-    elif Movement == "right":
+    elif move == "e":
         column = column + 1
-    elif Movement == "down":
+    elif move == "n":
+        row = row - 1
+    elif move == "s":
         row = row + 1
+    elif move == "ne":
+        row = row - 1
+        column = column + 1
+    elif move == "se":
+        row = row + 1
+        column = column + 1
+    elif move == "sw":
+        row = row + 1
+        column = column - 1
+    elif move == "nw":
+        row = row - 1
+        column = column - 1
 
-    ocean[row][column] = 'X'
+    if row > 4:
+        row = 0
+    elif row < 0:
+        row = 4
 
-    for row in ocean:
-        for tile in row:
-            print(tile, end=" ")
-        print("")
+    if column > 4:
+        column = 0
+    elif column < 0:
+        column = 4
 
-    print()
-    print()
+    #treasure finding
+    #==================================================================
+    if row == treasureRow and column == treasureColumn:
+        break
+
+print("=====================================")
+print("     ! Treasure has been Found !")
+print("          !!! You Win !!!")
+print("=====================================")
