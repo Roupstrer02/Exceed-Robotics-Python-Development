@@ -31,8 +31,8 @@ font = pg.font.Font('freesansbold.ttf', 32)
 while True:
     #inputs
     pg.event.pump()
-    mouseButtons = pg.mouse.get_pressed()    
-    
+    mouseButtons = pg.mouse.get_pressed()
+
     #menu logic
     if mouseButtons[0]:
         break
@@ -46,25 +46,25 @@ while True:
             theme = "dark"
             bgcolor = (0,0,0)
             fgcolor = (255,255,255)
-        
+
     #updates
     startGameText = font.render("Left click to start game", True, fgcolor)
     closeGameText = font.render("Middle click during game to close", True, fgcolor)
     themeChangeText = font.render("Right click to change theme", True, fgcolor)
-    
+
     #drawing
     screen.fill(bgcolor)
     #numbers found through trial and error
     screen.blit(startGameText, (222,300))
     screen.blit(closeGameText, (137,360))
     screen.blit(themeChangeText, (180,420))
-    
+
     #clock
     pg.display.flip()
 
     if mouseButtons[2]:
         time.sleep(1)
-    
+
     clock.tick(60)
 
 while True:
