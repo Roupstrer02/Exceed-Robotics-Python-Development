@@ -70,10 +70,12 @@ while True:
     for i in range(0,5):
         print(maze[i])
 
-    maze[row][column] = '~'
+    # BONUS: Only showing where the player currently is, instead of showing everywhere they've been
+    # maze[row][column] = '~'
 
     move = input("where do you want to go? ")
 
+    #I use n,e,s,w (cardinal directions), but the students can use any letter/word they want.
     if move == "w":
         column = column - 1
     elif move == "e":
@@ -82,25 +84,30 @@ while True:
         row = row - 1
     elif move == "s":
         row = row + 1
-    elif move == "ne":
-        row = row - 1
-        column = column + 1
-    elif move == "se":
-        row = row + 1
-        column = column + 1
-    elif move == "sw":
-        row = row + 1
-        column = column - 1
-    elif move == "nw":
-        row = row - 1
-        column = column - 1
 
-    if row > 4:
-        row = 0
-    elif row < 0:
-        row = 4
 
-    if column > 4:
-        column = 0
-    elif column < 0:
-        column = 4
+# BONUS: Moving Diagonally ===================================================
+    # elif move == "ne":
+        # row = row - 1
+        # column = column + 1
+    # elif move == "se":
+        # row = row + 1
+        # column = column + 1
+    # elif move == "sw":
+        # row = row + 1
+        # column = column - 1
+    # elif move == "nw":
+        # row = row - 1
+        # column = column - 1
+
+# BONUS: Looping movement ===================================================
+    # if row > 4:
+    #     row = 0
+    # elif row < 0:
+    #     row = 4
+
+    # if column > 4:
+    #     column = 0
+    # elif column < 0:
+    #     column = 4
+    print()

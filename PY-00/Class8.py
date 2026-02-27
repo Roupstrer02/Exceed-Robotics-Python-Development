@@ -6,63 +6,114 @@
 
 #===============================================================================
 # Basic individual task:
-# 5x5 Battleship
-#===============================================================================
-
-# ocean = [[0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0], [0,0,0,0,0]]
-# ships = [[0,0], [1,1], [2,2], [3,3], [4,4]]
-
-# while True:
-#     for row in ocean:
-#         for tile in row:
-#             print(tile, end=" ")
-#         print("")
-
-#     playerAttackX = input("What row do you want to hit? ")
-#     playerAttackY = input("What column do you want to hit? ")
-
-#     playerAttackX = int(playerAttackX)
-#     playerAttackY = int(playerAttackY)
-#     playerAttack = [playerAttackX, playerAttackY]
-
-#     if playerAttack in ships:
-#         print("Hit!")
-#         ocean[playerAttackX][playerAttackY] = "H"
-#     else:
-#         print("Miss...")
-#         ocean[playerAttackX][playerAttackY] = "M"
-
-#===============================================================================
-# Bonus Tasks:
-# - detect duplicate moves (hitting tiles already hit)
-# - detecting game victory
-
+# Treasure Hunting Game
 #===============================================================================
 
 ocean = [['~','~','~','~','~'], ['~','~','~','~','~'], ['~','~','~','~','~'], ['~','~','~','~','~'], ['~','~','~','~','~']]
 row = 2
 column = 2
+
+treasureRow = 4
+treasureColumn = 4
+
+
+movesLeft = 10
 while True:
 
+    ocean[row][column] = 'X'
+
+    # DO NOT REUSE THE NAME "row" FOR THIS VARIABLE
+    for mapRow in ocean:
+        print(mapRow)
+    print("your current position is:")
+    print("row: " + str(row))
+    print("column: " + str(column))
+    print("moves left: " + str(movesLeft))
     Movement = input("Where do you want to go? ")
 
     ocean[row][column] = '~'
 
-    if Movement == "left":
+    if Movement == "w":
         column = column - 1
-    elif Movement == "up":
-        row = row - 1
-    elif Movement == "right":
+    elif Movement == "e":
         column = column + 1
-    elif Movement == "down":
+    elif Movement == "n":
+        row = row - 1
+    elif Movement == "s":
         row = row + 1
+
+    movesLeft = movesLeft - 1
+
+    if row == treasureRow and column == treasureColumn:
+        print("!!! You Win !!!")
+
+    elif movesLeft == 0:
+        print("... You Lose ...")
+
+    print()
+    print()
+
+#===============================================================================
+# Bonus Tasks:
+# - the while loop ends when the player wins
+# - print player's position before every move
+# - print moves left before every move
+#===============================================================================
+
+ocean = [['~','~','~','~','~'], ['~','~','~','~','~'], ['~','~','~','~','~'], ['~','~','~','~','~'], ['~','~','~','~','~']]
+row = 2
+column = 2
+
+treasureRow = 4
+treasureColumn = 4
+gameover = False
+
+movesLeft = 10
+while gameover == False:
 
     ocean[row][column] = 'X'
 
-    for row in ocean:
-        for tile in row:
-            print(tile, end=" ")
-        print("")
+    # DO NOT REUSE THE NAME "row" FOR THIS VARIABLE
+    for mapRow in ocean:
+        print(mapRow)
+    print("your current position is:")
+    print("row: " + str(row))
+    print("column: " + str(column))
+    print("moves left: " + str(movesLeft))
+    Movement = input("Where do you want to go? ")
+
+    ocean[row][column] = '~'
+
+    if Movement == "w":
+        column = column - 1
+    elif Movement == "e":
+        column = column + 1
+    elif Movement == "n":
+        row = row - 1
+    elif Movement == "s":
+        row = row + 1
+
+    if Movement == "nw":
+        column = column - 1
+        row = row - 1
+    elif Movement == "ne":
+        column = column + 1
+        row = row - 1
+    elif Movement == "sw":
+        column = column - 1
+        row = row + 1
+    elif Movement == "se":
+        column = column + 1
+        row = row + 1
+
+    movesLeft = movesLeft - 1
+
+    if row == treasureRow and column == treasureColumn:
+        print("!!! You Win !!!")
+        gameover = True
+    elif movesLeft == 0:
+        print("... You Lose ...")
+        gameover = True
 
     print()
     print()

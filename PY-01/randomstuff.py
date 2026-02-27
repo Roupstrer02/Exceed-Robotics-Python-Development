@@ -1,8 +1,8 @@
 import pygame as pg
 pg.init()
 
-screen = pg.display.set_mode((800,600))
-gray = (200,200,200)
+screen = pg.display.set_mode((450,450))
+white = (255,255,255)
 red = (200,0,0)
 green = (0,200,0)
 blue = (0,0,200)
@@ -12,9 +12,9 @@ greenRectangle = pg.Rect(100,100,200,200)
 blueRectangle = pg.Rect(150,150,200,200)
 orangeRectangle = pg.Rect(200,200,200,200)
 
-screen.fill(gray)
+screen.fill(white)
 pg.draw.rect(screen, red, redRectangle)
-pg.draw.rect(screen, green, greenRectangle)
+#pg.draw.rect(screen, green, greenRectangle)
 pg.draw.rect(screen, blue, blueRectangle)
-pg.draw.rect(screen, orange, orangeRectangle)
+#pg.draw.rect(screen, orange, orangeRectangle)
 pg.display.flip()
