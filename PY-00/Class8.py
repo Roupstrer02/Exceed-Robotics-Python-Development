@@ -9,7 +9,7 @@
 # Treasure Hunting Game
 #===============================================================================
 
-ocean = [['~','~','~','~','~'], ['~','~','~','~','~'], ['~','~','~','~','~'], ['~','~','~','~','~'], ['~','~','~','~','~']]
+maze = [['~','~','~','~','~'], ['~','~','~','~','~'], ['~','~','~','~','~'], ['~','~','~','~','~'], ['~','~','~','~','~']]
 row = 2
 column = 2
 
@@ -20,10 +20,10 @@ treasureColumn = 4
 movesLeft = 10
 while True:
 
-    ocean[row][column] = 'X'
+    maze[row][column] = 'X'
 
     # DO NOT REUSE THE NAME "row" FOR THIS VARIABLE
-    for mapRow in ocean:
+    for mapRow in maze:
         print(mapRow)
     print("your current position is:")
     print("row: " + str(row))
@@ -31,16 +31,35 @@ while True:
     print("moves left: " + str(movesLeft))
     Movement = input("Where do you want to go? ")
 
-    ocean[row][column] = '~'
+    for i in range(0,5):
+        print(maze[i])
 
-    if Movement == "w":
+    maze[row][column] = '='
+
+    move = input("where do you want to go? ")
+
+    #movement (class 7)
+    #==================================================================
+    if move == "w":
         column = column - 1
-    elif Movement == "e":
+    elif move == "e":
         column = column + 1
-    elif Movement == "n":
+    elif move == "n":
         row = row - 1
-    elif Movement == "s":
+    elif move == "s":
         row = row + 1
+    elif move == "ne":
+        row = row - 1
+        column = column + 1
+    elif move == "se":
+        row = row + 1
+        column = column + 1
+    elif move == "sw":
+        row = row + 1
+        column = column - 1
+    elif move == "nw":
+        row = row - 1
+        column = column - 1
 
     movesLeft = movesLeft - 1
 
@@ -115,5 +134,12 @@ while gameover == False:
         print("... You Lose ...")
         gameover = True
 
-    print()
-    print()
+    #treasure finding
+    #==================================================================
+    if row == treasureRow and column == treasureColumn:
+        break
+
+print("=====================================")
+print("     ! Treasure has been Found !")
+print("          !!! You Win !!!")
+print("=====================================")

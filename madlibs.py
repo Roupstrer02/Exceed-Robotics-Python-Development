@@ -1,14 +1,14 @@
-numberToGuess = 5​
+numberToGuess = 5
 
-playerGuess = input("Guess my number, it's between 1 and 10: ")​
+playerGuess = input("Guess my number, it's between 1 and 10: ")
 
-playerGuess = int(playerGuess)​
+playerGuess = int(playerGuess)
 
-if playerGuess < numberToGuess:​
-    print("Too low")​
+if playerGuess < numberToGuess:
+    print("Too low")
 
-elif playerGuess > numberToGuess:​
-    print("Too high")​
+elif playerGuess > numberToGuess:
+    print("Too high")
 
-else:​
+else:
     print("Well Done!")
