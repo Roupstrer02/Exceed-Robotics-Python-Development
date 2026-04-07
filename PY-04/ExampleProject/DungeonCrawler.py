@@ -171,7 +171,7 @@ while True:
             wc = wall.center
             pc = p.hitbox.center
             if pc[0] < wc[0]:
-
+                pass
             moveCamera(dungeon, -cx, -cy)
             p.position_x += cx
             p.position_y += cy
