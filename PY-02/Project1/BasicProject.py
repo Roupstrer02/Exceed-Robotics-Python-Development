@@ -1,5 +1,6 @@
 import pygame as pg
 import random as rd
+
 platforms = []
 heights = (100,200,300)
 screen = pg.display.set_mode((1200,400))
@@ -7,7 +8,7 @@ clock = pg.time.Clock()
 
 player = pg.Rect(50,100,50,50)
 
-black = (0,0,0)
+black = (255,255,255)
 green = (0,255,0)
 red = (255,0,0)
 
