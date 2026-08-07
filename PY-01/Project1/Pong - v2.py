@@ -1,5 +1,6 @@
 import pygame as pg
 pg.init()
+pg.mixer.init()
 screen = pg.display.set_mode((800,600))
 clock = pg.time.Clock()
 
@@ -9,18 +10,27 @@ blue = (100,100,255)
 red = (255,25,25)
 green = (25,255,25)
 
+#game objects
 player1 = pg.Rect(50,250,25,150)
 player2 = pg.Rect(725,250,25,150)
 player2direction = 0
 ball = pg.Rect(390,290,50,50)
+
+#game object variables
 ballXdirection = 1
 ballYdirection = 1
 ballspeed = 5
 player2speed = 5
 
+#score variables
 player1score = 0
 player2score = 0
 
+#sound effect variables
+hitsound = pg.mixer.Sound("hit.mp3")
+#scoresound = pg.mixer.Sound("find a sound")
+
+#text variables
 font = pg.font.Font(None, 80)
 
 #images
@@ -49,10 +59,12 @@ while True:
     if player2.colliderect(ball):
         ballXdirection = -ballXdirection
         ballspeed += 1
+        hitsound.play()
     if player1.colliderect(ball):
         ballXdirection = -ballXdirection
         ballspeed += 1
-
+        hitsound.play()
+        
     if ball.x < -20:
         ball.x = 390
         ball.y = 290
