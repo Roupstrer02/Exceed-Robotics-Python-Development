@@ -1,6 +1,8 @@
 import pygame as pg
+import random as rd
 pg.init()
 pg.mixer.init()
+
 screen = pg.display.set_mode((800,600))
 clock = pg.time.Clock()
 
@@ -28,7 +30,6 @@ player2score = 0
 
 #sound effect variables
 hitsound = pg.mixer.Sound("hit.mp3")
-#scoresound = pg.mixer.Sound("find a sound")
 
 #text variables
 font = pg.font.Font(None, 80)
@@ -38,6 +39,8 @@ bluePaddle = pg.image.load("BluePaddle.png")
 redPaddle = pg.image.load("RedPaddle.png")
 yellowBall = pg.image.load("Ball.png")
 
+pg.mixer.music.load("music1.mp3")
+pg.mixer.music.play()
 while True:
 
     pg.event.pump()
@@ -57,11 +60,14 @@ while True:
         ballYdirection = -1
 
     if player2.colliderect(ball):
-        ballXdirection = -ballXdirection
+        ballXdirection = -1
+        ballYdirection = rd.randint(-1,1)
         ballspeed += 1
         hitsound.play()
+
     if player1.colliderect(ball):
-        ballXdirection = -ballXdirection
+        ballXdirection = 1
+        ballYdirection = rd.randint(-1,1)
         ballspeed += 1
         hitsound.play()
         
@@ -70,11 +76,13 @@ while True:
         ball.y = 290
         player2score += 1
         ballspeed = 5
+        player2speed += 1
     if ball.x > 800:
         ball.x = 390
         ball.y = 290
         player1score += 1
         ballspeed = 5
+        player2speed += 1
 
     #updates
     player1.y = mousePos[1] - 50
@@ -91,6 +99,7 @@ while True:
     screen.blit(yellowBall, (ball.x, ball.y))
     screen.blit(player1scoretext, (200, 50))
     screen.blit(player2scoretext, (550, 50))
+
     #update frame
     pg.display.flip()
     clock.tick(60)
