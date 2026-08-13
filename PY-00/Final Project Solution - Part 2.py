@@ -5,12 +5,14 @@ money = 0
 moneyGain = 1
 luck = 0.01 # can also be 1 if the student wants to use random.randint(1,100) instead of using float values
 
-print("==============================") # BONUS (1)
-print("welcome to Money Maker!") # BONUS (1)
-print("==============================") # BONUS (1)
-print() # BONUS (1)
-print("Time to begin!") # BONUS (1)
-print() # BONUS (1)
+#============================================= Start of BONUS (1)
+print("==============================")
+print("welcome to Money Maker!")
+print("==============================")
+print() 
+print("Time to begin!")
+print() 
+#============================================= End of BONUS (1)
 
 while True:
     print("==============================")
