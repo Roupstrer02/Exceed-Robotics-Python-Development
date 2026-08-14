@@ -5,10 +5,10 @@ screen = pg.display.set_mode((800,600))
 clock = pg.time.Clock()
 
 #colours
-black = (0,0,0)
-blue = (100,100,255)
-red = (255,25,25)
-green = (25,255,25)
+black = [0,0,0]
+blue = [100,100,255]
+red = [255,25,25]
+green = [25,255,25]
 
 #game objects
 player1 = pg.Rect(50,250,25,150)
