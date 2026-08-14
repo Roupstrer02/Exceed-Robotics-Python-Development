@@ -12,14 +12,14 @@ state = "Main Menu"
 font = pg.font.Font(None, 40)
 
 #colours
-black = (0,0,0)
-red = (255,0,0)
-green = (0,255,0)
-blue = (0,0,255)
-yellow = (255,255,0)
-purple = (255,0,255)
-teal = (0,255,255)
-white = (255,255,255)
+black = [0,0,0]
+red = [255,0,0]
+green = [0,255,0]
+blue = [0,0,255]
+yellow = [255,255,0]
+purple = [255,0,255]
+teal = [0,255,255]
+white = [255,255,255]
 
 #Main Menu global vars
 startButton = pg.Rect(300,200,200,75)
@@ -31,6 +31,12 @@ for i in range(10):
     for j in range(3):
         bricks.append(pg.Rect(80*i+1, 50*j+1, 78, 48))
 
+player = pg.Rect(350,550,100,25)
+playerspeed = 5
+
+ball = pg.Rect(390,510,20,20)
+ballspeedX = 3
+ballspeedY = 3
 #GameOver global vars
 
 def MainMenu():
@@ -50,15 +56,45 @@ def MainMenu():
 
 
 def Game():
-    global bricks
+    global bricks, player, ball, ballspeedX, ballspeedY
 
-    #inputs
+    #inputs ======================================================
     keys = pg.key.get_pressed()
 
-    #drawing
+    #game logic ==================================================
+    
+    #player controls
+    if keys[pg.K_a] == True:
+        player.x -= playerspeed
+    if keys[pg.K_d] == True:
+        player.x += playerspeed
+
+    #ball logic
+    if player.colliderect(ball):
+        ballspeedY = -3
+
+    if ball.x < 0:
+        ballspeedX = 3
+    if ball.x > 780:
+        ballspeedX = -3
+
+    for brick in bricks:
+        if brick.colliderect(ball):
+            ballspeedY = 3
+            bricks.remove(brick)
+
+    #updates
+    ball.x += ballspeedX
+    ball.y += ballspeedY
+    
+    #drawing =====================================================
     screen.fill(black)
     for brick in bricks:
         pg.draw.rect(screen, red, brick)
+    pg.draw.rect(screen, teal, player)
+    pg.draw.rect(screen, green, ball)
+
+    #frame update ================================================
     pg.display.flip()
 
 def GameOver():
