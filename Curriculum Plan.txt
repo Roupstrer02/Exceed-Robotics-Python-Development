@@ -1,0 +1,25 @@
+PY-01
+=======================================================================================================
+C1 lists and drawing (lists for colour, and later, mouse inputs)
+C2 moving
+C3 mouse input
+C4 collisions
+C5 bug fixing
+C6 images and text (background + game elements)
+C7 music and sound effects (very simple, so there's time to catch up and do bonuses)
+C8 presentation day (maybe some bonuses)
+
+PY-02 (Atari Brick Breaker)
+=======================================================================================================
+> functions
+> state machine
+> advanced Boolean logic (and/or)
+
+C1 functions (introduced without pygame, then with pygame)
+C2 Introduction to project + FSM
+C3 work day (player paddle and controls)
+C4 nested for loops (to draw a grid of bricks not just a line)
+C5 work day (adding the ball and the bounce mechanics)
+C6 work day (power ups the ball can hit)
+C7 workday (have a limited number of balls to throw. player loses if you run out)
+C8 presentation day (only small aesthetic bonuses)
