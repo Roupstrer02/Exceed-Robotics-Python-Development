@@ -1,4 +1,5 @@
 import pygame as pg
+import random as rd
 pg.init()
 pg.mixer.init()
 screen = pg.display.set_mode((800,600))
@@ -65,13 +66,15 @@ while True:
 
     if player2.colliderect(ball):
         ballXdirection = -ballXdirection
+        ballYdirection = rd.randint(-1,1)
         ballspeed += 1
         hitsound.play()
     if player1.colliderect(ball):
         ballXdirection = -ballXdirection
+        ballYdirection = rd.randint(-1,1)
         ballspeed += 1
         hitsound.play()
-        
+
     if ball.x < -20:
         ball.x = 390
         ball.y = 290
