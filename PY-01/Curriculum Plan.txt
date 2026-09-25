@@ -1,0 +1,14 @@
+PY-01: Fundamentals of Pygame 
+
+Class 1: Lists + Drawing in Pygame
+* Creating a list
+* Indexing into a list
+* Getting started with a Pygame project
+* RGB colours
+* Defining Rectangles
+* The drawing engine (Screen.fill() -> pg.draw.rect() -> pg.display.flip())
+
+
+
+
+>>> CLASS 7 INCLUDES MUSIC + MAKING THE PADDLE SMARTER 

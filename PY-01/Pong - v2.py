@@ -106,4 +106,3 @@ while True:
     #update frame
     pg.display.flip()
     clock.tick(60)
-
