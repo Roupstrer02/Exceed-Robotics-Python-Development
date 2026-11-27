@@ -2,7 +2,6 @@ import pygame as pg
 import random as rd
 
 pg.init()
-pg.mixer.init()
 screen = pg.display.set_mode((800,600))
 clock = pg.time.Clock()
 
@@ -68,12 +67,14 @@ while True:
     if player2.colliderect(ball):
         ballXdirection = -ballXdirection
         ballYdirection = rd.randint(-1,1)
+        ball.x = 575 # (Week 8: The ball teleports in front of the paddle to fix the bug)
         ballspeed += 1
         ball.x = 675
         hitsound.play()
     if player1.colliderect(ball):
         ballXdirection = -ballXdirection
         ballYdirection = rd.randint(-1,1)
+        ball.x = 75
         ballspeed += 1
         ball.x = 75
         hitsound.play()

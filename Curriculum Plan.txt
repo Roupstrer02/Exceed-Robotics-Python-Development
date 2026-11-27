@@ -1,0 +1,20 @@
+PY-01: Fundamentals of Pygame 
+
+PY-02: Name T.B.D
+    
+    Project:
+        snake?
+        platformer?
+
+    2 classes
+    functions
+
+    2 class
+    lists (part-2)
+    for loops
+
+    1 class?
+    code organization
+
+    throughout the term, emphasize during code along
+    error checking

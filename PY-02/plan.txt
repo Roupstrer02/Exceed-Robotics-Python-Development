@@ -1,0 +1,15 @@
+LO:
+- functions
+- for loops
+- list indexing
+- list appending
+
+
+c1 functions                                -> disco squares
+c2 functions + inputs                       -> create the player and control it using a function
+c3 for loops (only index loops)             -> draw a row of rectangles (fully parametrized)
+c4 standard pygame                          -> add player paddle and ball + movement (control is in a function)
+c5 collision detection for ball <-> brick   -> make the ball delete a brick on hit
+c6 ball bouncing off bricks properly        -> uh oh
+c7 images                                   -> add an image for the ball and paddle
+c8 bonus completion time                    -> bonuses

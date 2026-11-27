@@ -40,7 +40,10 @@ for i in range(10):
     for j in range(3):
         bricks.append(pg.Rect(80*i+1, 50*j+1, 78, 48))
 
+player = pg.Rect(325,500,150,25)
+
 #GameOver global vars
+<<<<<<< Updated upstream
 def control():
     keys = pg.key.get_pressed()
 
@@ -50,15 +53,56 @@ def control():
         player.x += playerspeed
 
 def drawEverything():
+=======
+
+def MainMenu():
+    global state
+    #inputs
+    mousePos = pg.mouse.get_pos()
+    L, M, R = pg.mouse.get_pressed()
+
+    if startButton.collidepoint(mousePos) and L == True:
+        state = "Game"
+
+    #drawing
+    screen.fill(black)
+    pg.draw.rect(screen, green, startButton)
+    screen.blit(startButtonText, (325,225))
+    pg.display.flip()
+
+def Game():
+    global bricks
+
+    #inputs
+    keys = pg.key.get_pressed()
+
+    #game logic
+    if keys[pg.K_a]:
+        player.x -= 10
+    if keys[pg.K_d]:
+        player.x += 10
+
+    #drawing
+>>>>>>> Stashed changes
     screen.fill(black)
 
     for brick in bricks:
         pg.draw.rect(screen, red, brick)
+<<<<<<< Updated upstream
     
     pg.draw.rect(screen, green, player)
     pg.draw.rect(screen, aqua, ball)
     pg.display.flip()
 
+=======
+
+    pg.draw.rect(screen, green, player)
+    pg.display.flip()
+
+def GameOver():
+    pass
+
+>>>>>>> Stashed changes
 while True:
     #player inputs
     pg.event.pump()
