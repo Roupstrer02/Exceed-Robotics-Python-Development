@@ -67,18 +67,15 @@ while True:
     if player2.colliderect(ball):
         ballXdirection = -ballXdirection
         ballYdirection = rd.randint(-1,1)
-        ball.x = 575 # (Week 8: The ball teleports in front of the paddle to fix the bug)
         ballspeed += 1
-        ball.x = 675
+        ball.x = 675 # (Week 8: The ball teleports in front of the paddle to fix the bug)
         hitsound.play()
     if player1.colliderect(ball):
         ballXdirection = -ballXdirection
         ballYdirection = rd.randint(-1,1)
         ball.x = 75
         ballspeed += 1
-        ball.x = 75
         hitsound.play()
-
     if ball.x < -20:
         ball.x = 390
         ball.y = 290
